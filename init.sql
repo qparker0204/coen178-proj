@@ -31,8 +31,10 @@ CREATE OR REPLACE TABLE Contract(
 CREATE OR REPLACE TABLE MachineUnderRepair(
   repairId char(3) PRIMARY KEY,
   machineId char(3),
-  timeIn date,
-  timeOut date,
+  dateIn date,
+  timeIn time,
+  dateOut date,
+  timeOut time,
   status char(1),
   coverage char(1),
   FOREIGN KEY machineId REFERENCES ServiceItem(machineId),
