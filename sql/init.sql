@@ -3,7 +3,7 @@ CREATE OR REPLACE TABLE ServiceItem(
   make char(10),
   model char(10),
   groupId char(3),
-  customerId char(3),
+  phone char(10),
   contractId char(3),
   FOREIGN KEY (groupId) REFERENCES Group(groupId),
   FOREIGN KEY (customerId) REFERENCES Customer(customerId),
@@ -17,9 +17,8 @@ CREATE OR REPLACE TABLE Group(
 );
 
 CREATE OR REPLACE TABLE  Customer(
-  customerId char(3) PRIMARY KEY,
-  name char(20),
-  phone char(10)
+  phone char(10) PRIMARY KEY,
+  name char(20)
 );
 
 CREATE OR REPLACE TABLE Contract(
@@ -31,6 +30,7 @@ CREATE OR REPLACE TABLE Contract(
 CREATE OR REPLACE TABLE MachineUnderRepair(
   repairId char(3) PRIMARY KEY,
   machineId char(3),
+  personId char(3),
   dateIn date,
   timeIn time,
   dateOut date,
@@ -38,11 +38,12 @@ CREATE OR REPLACE TABLE MachineUnderRepair(
   status char(1),
   coverage char(1),
   FOREIGN KEY machineId REFERENCES ServiceItem(machineId),
+  FOREIGN KEY personId REFERENCES RepairPerson,
   check (status in ('1', '2', '3', '4')),
   check (coverage in ('Y', 'N'))
 );
 
-CREATE OR REPLACE TABLE repairPerson(
+CREATE OR REPLACE TABLE RepairPerson(
   personId char(3) PRIMARY KEY,
   name char(20),
   phone char(10)
