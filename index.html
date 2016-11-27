@@ -5,7 +5,7 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	  <link rel="stylesheet" href="css/materialize.min.css">
-
+    <linl rel="stylesheet" href="css/style.css">
   </head>
   <body class="container">
       <div class="card-panel center teal">
@@ -22,32 +22,32 @@
       </div>
 
       <div id="vMachStatForm" class="card-panel white" hidden>
-        <form class="col s12">
+        <form class="col s12" action="php/vMachStatus.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="vmachineId" type="text" class="active validate">
-              <label for="vmachineId">Machine ID</label>
+              <input id="vMachId" name="vMachId" type="text" class="active validate">
+              <label for="vMachId">Machine ID</label>
             </div>
             <div class="input-field col s4">
-              <input id="vPhoneNumber1" type="text" class="active validate">
+              <input id="vPhoneNumber1" name="vPhoneNumber1" type="text" class="active validate">
               <label for="vPhoneNumber1">Phone Number</label>
             </div>
             <div class="input-field col s3 offset-s1">
-              <button class="btn waves-effect waves-light red" type="submit" name="action1">View<i class="material-icons right">send</i></button>
+              <button id="action1" class="btn waves-effect waves-light red" type="submit">View<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
       </div>
 
       <div id="vBillForm" class="card-panel white" hidden>
-        <form class="col s12">
+        <form class="col s12" action="php/vBill.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="vPhoneNumber2" type="text" class="active validate">
+              <input id="vPhoneNumber2" name="vPhoneNumber2" type="text" class="active validate">
               <label for="vPhoneNumber2">Phone Number</label>
             </div>
             <div class="input-field col s3 offset-s5">
-              <button class="btn waves-effect waves-light red" type="submit" name="action2">View<i class="material-icons right">send</i></button>
+              <button id="action2" class="btn waves-effect waves-light red" type="submit" name="action2">View<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
@@ -61,52 +61,52 @@
       </div>
 
       <div id="cServConForm" class="card-panel white" hidden>
-        <form class="col s12">
+        <form class="col s12" action="php/cServCon.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="cMachId1" type="text" class="active validate">
+              <input id="cMachId1" name="cMachId1" type="text" class="active validate">
               <label for="cMachId1">Machine ID</label>
             </div>
             <div class="input-field col s4">
-              <input id="cPhoneNumber" type="text" class="active validate">
+              <input id="cPhoneNumber" name="cPhoneNumber" type="text" class="active validate">
               <label for="cPhoneNumber">Phone Number</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s4">
-              <input id="cStartDate" type="text" class="active validate">
+              <input id="cStartDate" name="cStartDate" type="text" class="active validate">
               <label for="cStartDate">Start Date</label>
             </div>
             <div class="input-field col s4">
-              <input id="cEndDate" type="text" class="active validate">
+              <input id="cEndDate" name="cEndDate" type="text" class="active validate">
               <label for="cEndDate">End Date</label>
             </div>
             <div class="input-field col s3 offset-s1">
-              <button class="btn waves-effect waves-light red" type="submit" name="action2">Create<i class="material-icons right">send</i></button>
+              <button id="action3" class="btn waves-effect waves-light red" type="submit" name="action3">Create<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
       </div>
 
       <div id="cRepJobForm" class="card-panel white" hidden>
-        <form class="col s12">
+        <form class="col s12" action="php/cRepJob.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="cMachId2" type="text" class="active validate">
+              <input id="cMachId2" name="cMachId2" type="text" class="active validate">
               <label for="cMachId2">Machine ID</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s4">
-              <input id="cDateIn" type="text" class="active validate">
+              <input id="cDateIn" name="cDateIn" type="text" class="active validate">
               <label for="cDateIn">Date</label>
             </div>
             <div class="input-field col s4">
-              <input id="cTimeIn" type="text" class="active validate">
+              <input id="cTimeIn" name="cTimeIn" type="text" class="active validate">
               <label for="cTimeIn">Time</label>
             </div>
             <div class="input-field col s3 offset-s1">
-              <button class="btn waves-effect waves-light red" type="submit" name="action2">Create<i class="material-icons right">send</i></button>
+              <button id="action4" class="btn waves-effect waves-light red" type="submit" name="action4">Create<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
@@ -119,28 +119,28 @@
       </div>
 
       <div id="uMachStatForm" class="card-panel white" hidden>
-        <form class="col s12">
+        <form class="col s12" action="php/uMachStatus.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="uMachId" type="text" class="active validate">
+              <input id="uMachId" name="uMachId" type="text" class="active validate">
               <label for="uMachId">Machine ID</label>
             </div>
             <div class="input-field col s4">
-              <input id="newMachStat" type="text" class="active validate">
+              <input id="newMachStat" name="newMachStat" type="text" class="active validate">
               <label for="newMachStat">New Machine Status</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s4">
-              <input id="curTime" type="text" class="active validate">
+              <input id="curTime" name="curTime" type="text" class="active validate">
               <label for="curTime">Current Time</label>
             </div>
             <div class="input-field col s4">
-              <input id="costs" type="text" class="active validate">
+              <input id="costs" name="costs" type="text" class="active validate">
               <label for="costs">Costs</label>
             </div>
             <div class="input-field col s3 offset-s1">
-              <button class="btn waves-effect waves-light red" type="submit" name="action2">Update<i class="material-icons right">send</i></button>
+              <button id="action5" class="btn waves-effect waves-light red" type="submit" name="action5">Update<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
