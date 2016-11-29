@@ -1,8 +1,13 @@
 <?php
   $machineId = $_POST['cMachId2'];
-  $dateIn = $_POST['cDateIn'];
+  $monthIn = $_POST['cMonthIn'];
+  $dayIn = $_POST['cDayIn'];
+  $yearIn = $_POST['cYearIn'];
   $timeIn = $_POST['cTimeIn'];
-  echo $machineId;
-  echo $dateIn;
-  echo $timeIn;
+
+  $dateIn = $monthIn."-".$dayIn."-".$yearIn;
+
+  echo "Machine ID: ".$machineId."<br>";
+  echo "Date In: ".$dateIn."<br>";
+  echo "Time In: ".$timeIn;
 ?>
