@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  //initialize materialize select tags
+  $('select').material_select();
+  
   $("#vMachStat").click(function(){
     $("#vMachStatForm").slideToggle();
     $("#vBillForm").hide();

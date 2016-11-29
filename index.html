@@ -73,13 +73,57 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s4">
-              <input id="cStartDate" name="cStartDate" type="text" class="active validate">
-              <label for="cStartDate">Start Date</label>
+            <div class="input-field col s2">
+              <select id="cStartMonth" name="cStartMonth">
+                <option value="" disabled selected>Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+              </select>
+              <label for="cStartMonth">Start Date</label>
             </div>
-            <div class="input-field col s4">
-              <input id="cEndDate" name="cEndDate" type="text" class="active validate">
-              <label for="cEndDate">End Date</label>
+            <div class="input-field col s1">
+              <input placeholder="12" id="cStartDay" name="cStartDay" type="text" class="active validate">
+              <label for="cStartDay">Day</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="2016" id="cStartYear" name="cStartYear" type="text" class="active validate">
+              <label for="cStartYear">Year</label>
+            </div>
+            <div class="input-field col s2">
+              <select id="cEndMonth" name="cEndMonth">
+                <option value="" disabled selected>Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+              </select>
+              <label for="cEndMonth">End Month</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="12" id="cEndDay" name="cEndDay" type="text" class="active validate">
+              <label for="cEndDay">Day</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="2016"id="cEndYear" name="cEndYear" type="text" class="active validate">
+              <label for="cEndYear">Year</label>
             </div>
             <div class="input-field col s3 offset-s1">
               <button id="action3" class="btn waves-effect waves-light red" type="submit" name="action3">Create<i class="material-icons right">send</i></button>
@@ -97,12 +141,34 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s4">
-              <input id="cDateIn" name="cDateIn" type="text" class="active validate">
-              <label for="cDateIn">Date</label>
+            <div class="input-field col s2">
+              <select id="cMonthIn" name="cMonthIn">
+                <option value="" disabled selected>Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+              </select>
+              <label for="cMonthIn">Date</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="12" id="cDayIn" name="cDayIn" type="text" class="active validate">
+              <label for="cDayIn">Day</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="2016" id="cYearIn" name="cYearIn" type="text" class="active validate">
+              <label for="cYearIn">Year</label>
             </div>
             <div class="input-field col s4">
-              <input id="cTimeIn" name="cTimeIn" type="text" class="active validate">
+              <input placeholder="15:30" id="cTimeIn" name="cTimeIn" type="text" class="active validate">
               <label for="cTimeIn">Time</label>
             </div>
             <div class="input-field col s3 offset-s1">
@@ -132,7 +198,7 @@
           </div>
           <div class="row">
             <div class="input-field col s4">
-              <input id="curTime" name="curTime" type="text" class="active validate">
+              <input placeholder="15:30" id="curTime" name="curTime" type="text" class="active validate">
               <label for="curTime">Current Time</label>
             </div>
             <div class="input-field col s4">
