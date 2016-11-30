@@ -6,6 +6,24 @@
     alert("Could not connect to database");
     exit;
   }
+  
+
+  $sql = "SELECT SUM(hoursWorked)
+	  FROM MachineUnderRepair
+	  WHERE phone = $pNum and coverage = 'Y'";
+
+  $sql_statement = OCIParse($conn, $sql);
+  
+  OCIExecute($sql_statement);
+  
+  $sql_cust = "SELECT name
+	      FROM Customer
+	      WHERE phone = $pNum
+	      ";
+
+  $sql_cust_statement = OCIParse($conn, $sql_cust);
+  OCIExecute($sql_cust_statement)
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,12 +42,19 @@
         <h3>Customer Bill</h3>
         <div class="row">
           <div class="col s4">
-            <p><b>Customer Name: </b><?php ?></p>
+            <p><b>Customer Name: </b><?php echo  ?></p>
           </div>
           <div class="col s4">
             <p><b>Customer Phone: </b><?php echo $pNum; ?></p>
           </div>
         </div>
+	<div class="">
+	  <ol>
+	    <li>Problem ID <?php ?></li>
+	    <li>Description <?php ?></li>
+	    <li>Cost <?php ?></li>
+	  </ol>
+	</div>
         <div class="row">
           <div class="col s4">
             <p><b>Total Charges: </b><?php ?></p>
