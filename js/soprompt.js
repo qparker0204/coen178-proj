@@ -5,11 +5,19 @@ $(document).ready(function(){
   $("#vMachStat").click(function(){
     $("#vMachStatForm").slideToggle();
     $("#vBillForm").hide();
+    $("#vGenRevForm").hide();
   });
 
   $("#vBill").click(function(){
     $("#vBillForm").slideToggle();
     $("#vMachStatForm").hide();
+    $("#vGenRevForm").hide();
+  });
+
+  $("#vGenRev").click(function(){
+    $("#vGenRevForm").slideToggle();
+    $("#vMachStatForm").hide();
+    $("#vBillForm").hide();
   });
 
   $("#cServCon").click(function(){
@@ -24,5 +32,9 @@ $(document).ready(function(){
 
   $("#uMachStat").click(function(){
     $("#uMachStatForm").slideToggle();
+  });
+  
+  $("#vRepJob").click(function(){
+    window.location.href="php/vRepJobs.php";
   });
 });
