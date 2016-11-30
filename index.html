@@ -2,10 +2,10 @@
 <html>
    <head>
       <title>SoPrompt Services Inc.</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	  <link rel="stylesheet" href="css/materialize.min.css">
-    <linl rel="stylesheet" href="css/style.css">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	    <link rel="stylesheet" href="css/materialize.min.css">
+      <linl rel="stylesheet" href="css/style.css">
   </head>
   <body class="container">
       <div class="card-panel center teal">
@@ -63,11 +63,19 @@
       <div id="cServConForm" class="card-panel white" hidden>
         <form class="col s12" action="php/cServCon.php" method="post">
           <div class="row">
-            <div class="input-field col s4">
+            <div class="input-field col s2">
               <input id="cMachId1" name="cMachId1" type="text" class="active validate">
               <label for="cMachId1">Machine ID</label>
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col s2">
+              <input id="cConId" name="cConId" type="text" class="active validate">
+              <label for="cConId">Contract ID</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="cGroupId" name="cGroupId" type="text" class="active validate">
+              <label for="cGroupId">Group ID</label>
+            </div>
+            <div class="input-field col s2">
               <input id="cPhoneNumber" name="cPhoneNumber" type="text" class="active validate">
               <label for="cPhoneNumber">Phone Number</label>
             </div>

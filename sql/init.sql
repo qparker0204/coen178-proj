@@ -1,7 +1,5 @@
 CREATE OR REPLACE TABLE ServiceItem(
   machineId char(3) PRIMARY KEY,
-  make char(10),
-  model char(10),
   groupId char(3),
   phone char(10),
   contractId char(3),
@@ -30,10 +28,9 @@ CREATE OR REPLACE TABLE Contract(
 CREATE OR REPLACE TABLE MachineUnderRepair(
   repairId char(3) PRIMARY KEY,
   machineId char(3),
+  model char(20),
   personId char(3),
-  dateIn date,
   timeIn time,
-  dateOut date,
   timeOut time,
   status char(1),
   coverage char(1),
@@ -51,7 +48,8 @@ CREATE OR REPLACE TABLE RepairPerson(
 
 CREATE OR REPLACE TABLE Problem(
   problemId char(3) PRIMARY KEY,
-  description char(20)
+  description char(100),
+  cost INTEGER
 );
 
 CREATE OR REPLACE TABLE RepairProblem(
