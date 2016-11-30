@@ -20,8 +20,8 @@ CREATE TABLE  Customer(
 
 CREATE TABLE Contract(
   contractId char(3) PRIMARY KEY,
-  startDate date,
-  endDate date
+  startDate timestamp,
+  endDate timestamp
 );
 
 CREATE TABLE ServiceItem(
@@ -48,6 +48,7 @@ CREATE TABLE MachineUnderRepair(
   timeOut timestamp,
   status char(1),
   coverage char(1),
+  hoursWorked integer,
   FOREIGN KEY (machineId) REFERENCES ServiceItem(machineId),
   FOREIGN KEY (personId) REFERENCES RepairPerson,
   check (status in ('1', '2', '3', '4')),
@@ -67,3 +68,35 @@ CREATE TABLE RepairProblem(
   FOREIGN KEY (repairId) REFERENCES MachineUnderRepair(repairId),
   FOREIGN KEY (problemId) REFERENCES Problem(problemId)
 );
+
+INSERT INTO Customer VALUES ("7777777777", "Caddy Shack");
+INSERT INTO Customer VALUES ("5555555555", "Ronald McDonald");
+
+INSERT INTO Contract VALUES ("C01", timestamp '2015-1-1 00:00:00', timestamp '2017-1-1 00:00:00');
+INSERT INTO Contract VALUES ("C02", timestamp '2016-2-1 00:00:00', date '2016-12-31 00:00:00');
+INSERT INTO Contract VALUES ("C03", timestamp '2010-10-10 00:00:00', timestamp '2014-1-1 00:00:00');
+
+INSERT INTO MachineGroups VALUES("G01", 1);
+INSERT INTO MachineGroups VALUES("G02", 2);
+INSERT INTO MachineGroups VALUES("G03", 3);
+
+INSERT INTO ServiceItem VALUES("M01", "G01", "9166195555", "C01");
+INSERT INTO ServiceItem VALUES("M02", "G02", "4444444444", "C02");
+INSERT INTO ServiceItem VALUES("M03", "G03", "2323232323", "C03");
+
+INSERT INTO RepairPerson VALUES("RP1","Air Wiggins","4254560123");
+INSERT INTO RepairPerson VALUES("RP2","Frank Tank","9161234567");
+INSERT INTO RepairPerson VALUES("RP3","AP Allday","8089876543");
+
+INSERT INTO MachineUnderRepair VALUES("UR1", "M01", "Macbook Air", "RP1", TIMESTAMP '2016-11-29 00:00:00' , NULL, "1", "Y", 0);
+INSERT INTO MachineUnderRepair VALUES("UR2", "M02", "HP Elite", "RP2", TIMESTAMP '2016-11-25 12:00:00', NULL, "1", "N", 0);
+INSERT INTO MachineUnderRepair VALUES("UR3", "M03", "Mackbook Pro", "RP3", TIMESTAMP '2016-10-31 10:00:00', NULL , "1", "N", 0);
+
+
+INSERT INTO Problem VALUES("P01", "Keyboard malfunction");
+INSERT INTO Problem VALUES("P02", "Destory screen");
+INSERT INTO Problem VALUES("P03", "Unable to hold charge");
+
+INSERT INTO RepairProblem VALUES("UR1", "P01");
+INSERT INTO RepairProblem VALUES("UR2", "P02");
+INSERT INTO RepairProblem VALUES("UR3", "P03");
