@@ -49,6 +49,7 @@ CREATE TABLE MachineUnderRepair(
   status char(1),
   coverage char(1),
   hoursWorked integer,
+  phone char(10),
   FOREIGN KEY (machineId) REFERENCES ServiceItem(machineId),
   FOREIGN KEY (personId) REFERENCES RepairPerson,
   check (status in ('1', '2', '3', '4')),
