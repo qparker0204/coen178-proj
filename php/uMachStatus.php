@@ -1,14 +1,29 @@
 <?php
   $machineId = $_POST['uMachId'];
   $newMachStat = $_POST['newMachStat'];
+  $curMonth = $_POST['curMonth'];
+  $curDay = $_POST['curDay'];
+  $curYear = $_POST['curYear'];
   $curTime = $_POST['curTime'];
-  $costs = $_POST['costs'];
+  $hours = $_POST['hours'];
+ 
+  $curDate = $curDay."-".$curMonth."-".$curYear;
+  $curTime = $curDate." ".$curTime.":00";
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
     alert("Could not connect to database");
     exit;
   }
+  if($newMachStat == "3"){
+    $sql = "UPDATE MachineUnderRepair SET status='$newMachStat', timeOut='$curTime', hoursWorked=hoursWorked+'$hours' WHERE machineId='$machineId'";
+  }
+  else{
+    $sql = "UPDATE MachineUnderRepair SET status='$newMachStat', hoursWorked=hoursWorked+'$hours' WHERE machineId='$machineId'";
+  }
+  $sql_stmt = OCIParse($conn, $sql);
+  OCIExecute($sql_stmt);
+  OCIFreeStatement($sql_stmt);
 
 ?>
 <!DOCTYPE html>

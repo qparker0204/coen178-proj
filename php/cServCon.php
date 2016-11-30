@@ -1,12 +1,7 @@
 <?php
   $machineId = $_POST['cMachId1'];
   $contractId = $_POST['cConId'];
-  if($_POST['cGroupId']){
-    $groupId = $_POST['cGroupId'];
-  }
-  else{
-    $groupId = "null";
-  }
+  $groupId = $_POST['cGroupId'];
   $pNum = $_POST['cPhoneNumber'];
   $startMonth = $_POST['cStartMonth'];
   $startDay = $_POST['cStartDay'];
@@ -15,8 +10,8 @@
   $endDay = $_POST['cEndDay'];
   $endYear = $_POST['cEndYear'];
 
-  $startDate = $startMonth."-".$startDay."-".$startYear;
-  $endDate = $endMonth."-".$endYear."-".$endDay;
+  $startDate = $startDay."-".$startMonth."-".$startYear."00:00:00";
+  $endDate = $endDay."-".$endMonth."-".$endDay."00:00:00";
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
@@ -24,13 +19,21 @@
     exit;
   }
 
-  $sql = "INSERT INTO Contract VALUES ($contractId, $startDate, $endDate)";
+  $sql = "INSERT INTO Contract VALUES ('$contractId', '$startDate', '$endDate')";
   $sql_stmt = OCIParse($conn, $sql);
   OCIExecute($sql_stmt);
+  OCIFreeStatement($sql_stmt);
 
-  $sql = "INSERT INTO ServiceItem VALUES($machineId, $groupId, $pNum, $contractId)"
+  $sql = "INSERT INTO MachineGroups VALUES ('$groupId', '1')";
   $sql_stmt = OCIParse($conn, $sql);
   OCIExecute($sql_stmt);
+  OCIFreeStatement($sql_stmt);
+
+  $sql = "INSERT INTO ServiceItem VALUES ('$machineId', '$groupId', '$pNum', '$contractId')";
+  $sql_stmt = OCIParse($conn, $sql);
+  OCIExecute($sql_stmt);
+  OCIFreeStatement($sql_stmt);
+
 ?>
 <!DOCTYPE html>
 <html>

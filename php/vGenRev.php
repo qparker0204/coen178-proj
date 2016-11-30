@@ -1,5 +1,6 @@
 <?php
-  $machineId = $_POST['vMachId'];
+  $startDate = $_POST['vRevStartDate'];
+  $endDate = $_POST['vRevEndDate'];
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
@@ -7,15 +8,10 @@
     exit;
   }
   
-  $sql = "SELECT status FROM MachineUnderRepair WHERE machineId = '$machineId'";
+  $sql = "SELECT * FROM MachineUnderRepair";
   $sql_stmt = OCIParse($conn, $sql);
   OCIExecute($sql_stmt);
   $num_columns = OCINumCols($sql_stmt);
-  while (OCIFetch($sql_stmt)) {
-    for ($i = 1; $i <= $num_columns; $i++) {
-      $column_value = OCIResult($sql_stmt, $i);
-    }
-  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,16 +29,25 @@
       <div class="card-panel white">
         <h3>Machine Status</h3>
         <div class="row">
-          <div class="col s4">
-            <p><b>Machine ID: </b><?php echo $machineId; ?></p>
-          </div>
-          <div class="col s4">
-            <p><b>Status: </b><?php echo $column_value;?></p>
-          </div>
+          <table BORDER=1>
+	    <TR><TH>Repair ID</TH><TH>Machine ID</TH><TH>Model</TH><TH>Repair Person ID</TH><TH>TimeIn</TH><TH>TimeOut</TH><TH>Status</TH><TH>Coverage</TH>
+	  <?php
+	    while (OCIFetch($sql_stmt)) {
+	      echo "<TR>";
+	      for ($i = 1; $i <= $num_columns; $i++) {
+		$column_value = OCIResult($sql_stmt, $i);
+		echo "<TD>$column_value</TD>";
+	      }
+	      echo "</TR>";
+	    }
+	  ?>
+	  </table>
         </div>
         <div class="row">
-          <button id="back" class="btn-large waves-effect waves-dark grey" onclick="goBack()"><i class="material-icons left">arrow_back</i>Back</button>
-        </div>
+	  <div>
+	    <button id="back" class="btn-large waves-effect waves-dark grey" onclick="goBack()"><i class="material-icons left">arrow_back</i>Back</button>
+	  </div>
+	</div>
       </div>
 
       <!-- Materialize Core Javascript -->

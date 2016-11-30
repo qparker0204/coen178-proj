@@ -1,17 +1,28 @@
 <?php
   $machineId = $_POST['cMachId2'];
+  $repairId = $_POST['cRepId'];
+  $model = $_POST['cModel'];
   $monthIn = $_POST['cMonthIn'];
   $dayIn = $_POST['cDayIn'];
   $yearIn = $_POST['cYearIn'];
   $timeIn = $_POST['cTimeIn'];
+  $repPersonId = $_POST['cRepPersonId'];
+  $covered = $_POST['cCovered'];
 
-  $dateIn = $monthIn."-".$dayIn."-".$yearIn;
+  $dateIn = $dayIn."-".$monthIn."-".$yearIn;
+  $status = "1";
+  $timeIn = $dateIn." ".$timeIn.":00";
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
     alert("Could not connect to database");
     exit;
   }
+
+  $sql = "INSERT INTO MachineUnderRepair (repairId, machineId, model, personId, timeIn, status, coverage) VALUES ('$repairId', '$machineId', '$model', '$repPersonId', '$timeIn', '$status', '$covered')";
+  $sql_stmt = OCIParse($conn, $sql);
+  OCIExecute($sql_stmt);
+  OCIFreeStatement($sql_stmt);
 ?>
 
 <!DOCTYPE html>
