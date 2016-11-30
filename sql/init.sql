@@ -59,15 +59,14 @@ CREATE TABLE MachineUnderRepair(
 CREATE TABLE Problem(
   problemId char(3) PRIMARY KEY,
   description char(100),
-  cost INTEGER,
-  machineId char(3)
+  cost INTEGER
 );
 
 CREATE TABLE RepairProblem(
-  repairId char(3),
+  machineId char(3),
   problemId char (3),
-  CONSTRAINT repairProblemPK PRIMARY KEY (repairId, problemId),
-  FOREIGN KEY (repairId) REFERENCES MachineUnderRepair(repairId),
+  CONSTRAINT repairProblemPK PRIMARY KEY (machineId, problemId),
+  FOREIGN KEY (machineId) REFERENCES MachineUnderRepair(machineId),
   FOREIGN KEY (problemId) REFERENCES Problem(problemId)
 );
 
