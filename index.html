@@ -28,11 +28,7 @@
               <input id="vMachId" name="vMachId" type="text" class="active validate">
               <label for="vMachId">Machine ID</label>
             </div>
-            <div class="input-field col s4">
-              <input id="vPhoneNumber1" name="vPhoneNumber1" type="text" class="active validate">
-              <label for="vPhoneNumber1">Phone Number</label>
-            </div>
-            <div class="input-field col s3 offset-s1">
+            <div class="input-field col s3 offset-s5">
               <button id="action1" class="btn waves-effect waves-light red" type="submit">View<i class="material-icons right">send</i></button>
             </div>
           </div>
@@ -48,6 +44,24 @@
             </div>
             <div class="input-field col s3 offset-s5">
               <button id="action2" class="btn waves-effect waves-light red" type="submit" name="action2">View<i class="material-icons right">send</i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="vGenRevForm" class="card-panel white" hidden>
+        <form class="col s12" action="php/vGenRev.php" method="post">
+          <div class="row">
+            <div class="input-field col s4">
+              <input placeholder="12-Jan-2016 00:00:00" id="vRevStartDate" name="vRevStartDate" type="text" class="active validate">
+              <label for="vRevStartDate">Start Date</label>
+            </div>
+	    <div class="input-field col s4">
+              <input placeholder="12-Jan-2016 00:00:00" id="vRevEndDate" name="vRevEndDate" type="text" class="active validate">
+              <label for="vRevEndDate">End Date</label>
+            </div>
+            <div class="input-field col s3 offset-s1">
+              <button id="action1" class="btn waves-effect waves-light red" type="submit">View<i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
@@ -143,11 +157,29 @@
       <div id="cRepJobForm" class="card-panel white" hidden>
         <form class="col s12" action="php/cRepJob.php" method="post">
           <div class="row">
-            <div class="input-field col s4">
+            <div class="input-field col s2">
               <input id="cMachId2" name="cMachId2" type="text" class="active validate">
               <label for="cMachId2">Machine ID</label>
             </div>
+	    <div class="input-field col s2">
+              <input id="cRepId" name="cRepId" type="text" class="active validate">
+              <label for="cRepId">Repair ID</label>
+            </div>
+	    <div class="input-field col s2">
+              <input id="cModel" name="cModel" type="text" class="active validate">
+              <label for="cModel">Model</label>
+            </div>
           </div>
+	  <div class="row">
+	    <div class="input-field col s4">
+              <input id="cRepPersonId" name="cRepPersonId" type="text" class="active validate">
+              <label for="cRepPersonId">Repair Person ID</label>
+            </div>
+	    <div class="input-field col s2">
+              <input id="cCovered" name="cCovered" type="text" class="active validate">
+              <label for="cCovered">Coverage</label>
+            </div>
+	  </div>
           <div class="row">
             <div class="input-field col s2">
               <select id="cMonthIn" name="cMonthIn">
@@ -205,13 +237,39 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s4">
+	    <div class="input-field col s2">
+              <select id="curMonth" name="curMonth">
+                <option value="" disabled selected>Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+              </select>
+              <label for="curMonth">Current Date</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="12" id="curDay" name="curDay" type="text" class="active validate">
+              <label for="curDay">Day</label>
+            </div>
+            <div class="input-field col s1">
+              <input placeholder="2016" id="curYear" name="curYear" type="text" class="active validate">
+              <label for="curYear">Year</label>
+            </div>
+            <div class="input-field col s2">
               <input placeholder="15:30" id="curTime" name="curTime" type="text" class="active validate">
               <label for="curTime">Current Time</label>
             </div>
-            <div class="input-field col s4">
-              <input id="costs" name="costs" type="text" class="active validate">
-              <label for="costs">Costs</label>
+            <div class="input-field col s2">
+              <input id="hours" name="hours" type="text" class="active validate">
+              <label for="hours">Costs</label>
             </div>
             <div class="input-field col s3 offset-s1">
               <button id="action5" class="btn waves-effect waves-light red" type="submit" name="action5">Update<i class="material-icons right">send</i></button>
