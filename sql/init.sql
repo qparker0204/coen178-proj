@@ -59,7 +59,8 @@ CREATE TABLE MachineUnderRepair(
 CREATE TABLE Problem(
   problemId char(3) PRIMARY KEY,
   description char(100),
-  cost INTEGER
+  cost INTEGER,
+  machineId char(3)
 );
 
 CREATE TABLE RepairProblem(
@@ -89,14 +90,14 @@ INSERT INTO RepairPerson VALUES("RP1","Air Wiggins","4254560123");
 INSERT INTO RepairPerson VALUES("RP2","Frank Tank","9161234567");
 INSERT INTO RepairPerson VALUES("RP3","AP Allday","8089876543");
 
-INSERT INTO MachineUnderRepair VALUES("UR1", "M01", "Macbook Air", "RP1", TIMESTAMP '2016-11-29 00:00:00' , NULL, "1", "Y", 0);
-INSERT INTO MachineUnderRepair VALUES("UR2", "M02", "HP Elite", "RP2", TIMESTAMP '2016-11-25 12:00:00', NULL, "1", "N", 0);
-INSERT INTO MachineUnderRepair VALUES("UR3", "M03", "Mackbook Pro", "RP3", TIMESTAMP '2016-10-31 10:00:00', NULL , "1", "N", 0);
+INSERT INTO MachineUnderRepair VALUES("UR1", "M01", "Macbook Air", "RP1", TIMESTAMP '2016-11-29 00:00:00' , NULL, "1", "Y", 0, "7777777777");
+INSERT INTO MachineUnderRepair VALUES("UR2", "M02", "HP Elite", "RP2", TIMESTAMP '2016-11-25 12:00:00', NULL, "1", "N", 0, "5555555555");
+INSERT INTO MachineUnderRepair VALUES("UR3", "M03", "Mackbook Pro", "RP3", TIMESTAMP '2016-10-31 10:00:00', NULL , "1", "N", 0, "5555555555");
 
 
-INSERT INTO Problem VALUES("P01", "Keyboard malfunction");
-INSERT INTO Problem VALUES("P02", "Destory screen");
-INSERT INTO Problem VALUES("P03", "Unable to hold charge");
+INSERT INTO Problem VALUES("P01", "Keyboard malfunction", "M01");
+INSERT INTO Problem VALUES("P02", "Destory screen", "M02");
+INSERT INTO Problem VALUES("P03", "Unable to hold charge", "M03");
 
 INSERT INTO RepairProblem VALUES("UR1", "P01");
 INSERT INTO RepairProblem VALUES("UR2", "P02");
