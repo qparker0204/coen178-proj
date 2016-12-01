@@ -39,8 +39,8 @@
         <form class="col s12" action="php/vBill.php" method="post">
           <div class="row">
             <div class="input-field col s4">
-              <input id="vPhoneNumber2" name="vPhoneNumber2" type="text" class="active validate">
-              <label for="vPhoneNumber2">Phone Number</label>
+              <input id="vRepId" name="vRepId" type="text" class="active validate">
+              <label for="vRepId">Repair ID</label>
             </div>
             <div class="input-field col s3 offset-s5">
               <button id="action2" class="btn waves-effect waves-light red" type="submit" name="action2">View<i class="material-icons right">send</i></button>
@@ -171,9 +171,13 @@
             </div>
           </div>
 	  <div class="row">
-	    <div class="input-field col s4">
+	    <div class="input-field col s2">
               <input id="cRepPersonId" name="cRepPersonId" type="text" class="active validate">
               <label for="cRepPersonId">Repair Person ID</label>
+            </div>
+	    <div class="input-field col s2">
+              <input id="cPhoneNumber2" name="cPhoneNumber2" type="text" class="active validate">
+              <label for="cPhoneNumber2">Phone Number</label>
             </div>
 	    <div class="input-field col s2">
               <input id="cCovered" name="cCovered" type="text" class="active validate">
@@ -269,7 +273,7 @@
             </div>
             <div class="input-field col s2">
               <input id="hours" name="hours" type="text" class="active validate">
-              <label for="hours">Costs</label>
+              <label for="hours">Hours Worked</label>
             </div>
             <div class="input-field col s3 offset-s1">
               <button id="action5" class="btn waves-effect waves-light red" type="submit" name="action5">Update<i class="material-icons right">send</i></button>
