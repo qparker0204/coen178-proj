@@ -8,10 +8,13 @@
   $timeIn = $_POST['cTimeIn'];
   $repPersonId = $_POST['cRepPersonId'];
   $covered = $_POST['cCovered'];
+  $pNum = $_POST['cPhoneNumber2'];
+  
 
   $dateIn = $dayIn."-".$monthIn."-".$yearIn;
   $status = "1";
   $timeIn = $dateIn." ".$timeIn.":00";
+  $hWorked = 0;
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
@@ -19,7 +22,7 @@
     exit;
   }
 
-  $sql = "INSERT INTO MachineUnderRepair (repairId, machineId, model, personId, timeIn, status, coverage) VALUES ('$repairId', '$machineId', '$model', '$repPersonId', '$timeIn', '$status', '$covered')";
+  $sql = "INSERT INTO MachineUnderRepair (repairId, machineId, model, personId, timeIn, status, coverage, hoursWorked, phone) VALUES ('$repairId', '$machineId', '$model', '$repPersonId', '$timeIn', '$status', '$covered', '$hWorked', '$pNum')";
   $sql_stmt = OCIParse($conn, $sql);
   OCIExecute($sql_stmt);
   OCIFreeStatement($sql_stmt);
@@ -48,9 +51,6 @@
         <div class="row">
           <div class="col s4">
             <p><b>Date In: </b><?php echo $dateIn; ?></p>
-          </div>
-          <div class="col s4">
-            <p><b>Time In: </b><?php echo $timeIn; ?></p>
           </div>
         </div>
         <div class="row">

@@ -26,8 +26,10 @@
       <div class="card-panel white">
         <h3>Machine Status</h3>
         <div class="row">
-          <table BORDER=1>
-	    <TR><TH>Repair ID</TH><TH>Machine ID</TH><TH>Model</TH><TH>Repair Person ID</TH><TH>TimeIn</TH><TH>TimeOut</TH><TH>Status</TH><TH>Coverage</TH>
+          <table class="striped centered">
+	    <thead>
+	      <TR><TH>Repair ID</TH><TH>Machine ID</TH><TH>Model</TH><TH>Repair Person ID</TH><TH>TimeIn</TH><TH>TimeOut</TH><TH>Status</TH><TH>Coverage</TH><TH>Hours Worked</TH><TH>Customer Phone</TH></TR>
+	    </thead>
 	  <?php
 	    while (OCIFetch($sql_stmt)) {
 	      echo "<TR>";

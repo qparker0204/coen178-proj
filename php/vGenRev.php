@@ -8,10 +8,13 @@
     exit;
   }
   
-  $sql = "SELECT * FROM MachineUnderRepair";
+  $sql = "SELECT genRevenue('$startDate', '$endDate') FROM dual";
   $sql_stmt = OCIParse($conn, $sql);
   OCIExecute($sql_stmt);
   $num_columns = OCINumCols($sql_stmt);
+  OCIFetch($sql_stmt);
+  $column_value=OCIResult($sql_stmt, 1);
+  $values = explode(",", $column_value);
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,19 +32,12 @@
       <div class="card-panel white">
         <h3>Machine Status</h3>
         <div class="row">
-          <table BORDER=1>
-	    <TR><TH>Repair ID</TH><TH>Machine ID</TH><TH>Model</TH><TH>Repair Person ID</TH><TH>TimeIn</TH><TH>TimeOut</TH><TH>Status</TH><TH>Coverage</TH>
-	  <?php
-	    while (OCIFetch($sql_stmt)) {
-	      echo "<TR>";
-	      for ($i = 1; $i <= $num_columns; $i++) {
-		$column_value = OCIResult($sql_stmt, $i);
-		echo "<TD>$column_value</TD>";
-	      }
-	      echo "</TR>";
-	    }
-	  ?>
-	  </table>
+          <div class="col s6">
+            <p><b>Revenue Generated Under Warranty: </b>$<?php echo $values[0]; ?></p>
+          </div>
+	  <div class="col s6">
+            <p><b>Revenue Generated Not Under Warranty: </b>$<?php echo $values[1]; ?></p>
+          </div>
         </div>
         <div class="row">
 	  <div>

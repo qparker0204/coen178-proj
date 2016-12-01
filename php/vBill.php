@@ -1,5 +1,5 @@
 <?php
-  $pNum = $_POST['vPhoneNumber2'];
+  $repId = $_POST['vRepId'];
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
@@ -8,22 +8,19 @@
   }
   
 
-  $sql = "SELECT SUM(hoursWorked)
-	  FROM MachineUnderRepair
-	  WHERE phone = $pNum and coverage = 'Y'";
-
-  $sql_statement = OCIParse($conn, $sql);
-  
-  OCIExecute($sql_statement);
-  
-  $sql_cust = "SELECT name
-	      FROM Customer
-	      WHERE phone = $pNum
-	      ";
-
-  $sql_cust_statement = OCIParse($conn, $sql_cust);
-  OCIExecute($sql_cust_statement)
-  
+  $sql = "SELECT genBill('$repId') from dual";
+  $sql_stmt = OCIParse($conn, $sql);
+  OCIExecute($sql_stmt);
+  OCIFetch($sql_stmt);
+  $column_value = OCIResult($sql_stmt, 1);
+  $values = explode(",", $column_value);
+  if($values[4] == 0){
+    $warranty = "Yes";
+  }
+  else{
+    $warranty = "No";
+  }
+  $laborCost = $values[3]*25 + 50;
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,22 +39,32 @@
         <h3>Customer Bill</h3>
         <div class="row">
           <div class="col s4">
-            <p><b>Customer Name: </b><?php echo  ?></p>
+            <p><b>Customer Name: </b><?php echo $values[6] ?></p>
           </div>
           <div class="col s4">
-            <p><b>Customer Phone: </b><?php echo $pNum; ?></p>
+            <p><b>Customer Phone: </b><?php echo $values[5]; ?></p>
           </div>
-        </div>
-	<div class="">
-	  <ol>
-	    <li>Problem ID <?php ?></li>
-	    <li>Description <?php ?></li>
-	    <li>Cost <?php ?></li>
-	  </ol>
+	</div>
+	<div class="row">
+	  <table class="striped center">
+	    <thead>
+	      <tr><th>Problem Code</th><th>Problem Description</th><th>Problem Cost</th><th>Hours Worked</th><th>Labor Cost</th></tr>
+	    </thead>
+	    <tr>
+	      <td><?php echo $values[0]?></td>
+	      <td><?php echo $values[1]?></td>
+	      <td><?php echo "$".$values[2]?></td>
+	      <td><?php echo $values[3]?></td>
+	      <td><?php echo "$".$laborCost?></td>
+	    </tr>
+	  </table>
 	</div>
         <div class="row">
+	  <div class="col s4">
+	    <p><b>Under Warranty?: <b><?php echo $warranty?></p>
+	  </div>
           <div class="col s4">
-            <p><b>Total Charges: </b><?php ?></p>
+            <p><b>Total Charges: $</b><?php echo $values[4] ?></p>
           </div>
         </div>
         <div class="row">

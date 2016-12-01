@@ -10,8 +10,8 @@
   $endDay = $_POST['cEndDay'];
   $endYear = $_POST['cEndYear'];
 
-  $startDate = $startDay."-".$startMonth."-".$startYear."00:00:00";
-  $endDate = $endDay."-".$endMonth."-".$endDay."00:00:00";
+  $startDate = $startDay."-".$startMonth."-".$startYear."01:00:00";
+  $endDate = $endDay."-".$endMonth."-".$endDay."01:00:00";
 
   $conn = oci_connect('qparker', '01Eragon01', '//dbserver.engr.scu.edu/db11g');
   if(!$conn){
